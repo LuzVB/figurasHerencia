@@ -15,22 +15,27 @@ public class FigurasGeometricas {
     private double lado2;
     private double area;
     private double perimetro;
-    private int coordenada1X, coordenada1Y;
-    private int coordenada2X, coordenada2Y;
-    private int coordenada3X, coordenada3Y;
+    private double coordenada1X, coordenada1Y;
+    private double coordenada2X, coordenada2Y;
+    private double coordenada3X, coordenada3Y;
     private String coordenada1;
     private String coordenada2;
     private String coordenada3;
     private String color;
 
     //pensar si hacer otro constructor para los lados
-    public FigurasGeometricas(int coordenada1X, int coordenada1Y, int coordenada2X, int coordenada2Y, int coordenada3X, int coordenada3Y) {
+    public FigurasGeometricas(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y) {
         this.coordenada1X = coordenada1X;
         this.coordenada1Y = coordenada1Y;
         this.coordenada2X = coordenada2X;
         this.coordenada2Y = coordenada2Y;
         this.coordenada3X = coordenada3X;
         this.coordenada3Y = coordenada3Y;
+        
+        System.out.print("1/"+coordenada1X+","+coordenada1Y+"\n");
+        System.out.print("2/"+coordenada2X+","+coordenada2Y+"\n");
+        System.out.print("3/"+coordenada3X+","+coordenada3Y+"\n");
+        
         
         hallarLado();
     }
@@ -39,11 +44,11 @@ public class FigurasGeometricas {
         this.lado1 = lado1;
     }*/
 
-    //Recibe las coordenadas en pares , para validar si se puede hacer un cuadrado en caso de que si se envia un true
+    //Recibe las coordenadas en pares , para validar si se puede hacer un triangulo en caso de que si se envia un true
     public boolean verificarCoordenadas(){
         boolean verificar=true;
         
-        if(this.coordenada1X==this.coordenada2X && this.coordenada2X==this.coordenada3X && this.coordenada1Y==this.coordenada2Y && this.coordenada2Y == this.coordenada3Y || this.coordenada1Y==this.coordenada2Y && this.coordenada2Y==this.coordenada3Y ){   
+        if(this.coordenada1X==this.coordenada2X && this.coordenada2Y == this.coordenada3Y  ){   
             verificar = false;
         }
         return verificar;
@@ -69,15 +74,19 @@ public class FigurasGeometricas {
 
     //Genera los arrays de puntos x y y para graficar un poligono
     public int[] arrayPuntosEnX() {
-        int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
+       // int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
+        int puntosEnX[]= {1, 2, 3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
     }
 
     public int[] arrayPuntosEnY() {
-        int puntosEnY[] = {coordenada1Y, coordenada2Y, coordenada3Y};
+//        int puntosEnY[] = {coordenada1Y, coordenada2Y, coordenada3Y};
+//        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
+//        return puntosEnY;
+         int puntosEnX[]= {1, 2, 3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
-        return puntosEnY;
+        return puntosEnX;
     }
 
     public void hallarArea() {
@@ -128,51 +137,51 @@ public class FigurasGeometricas {
         this.perimetro = perimetro;
     }
 
-    public int getCoordenada1X() {
+    public double getCoordenada1X() {
         return coordenada1X;
     }
 
-    public void setCoordenada1X(int coordenada1X) {
+    public void setCoordenada1X(double coordenada1X) {
         this.coordenada1X = coordenada1X;
     }
 
-    public int getCoordenada1Y() {
+    public double getCoordenada1Y() {
         return coordenada1Y;
     }
 
-    public void setCoordenada1Y(int coordenada1Y) {
+    public void setCoordenada1Y(double coordenada1Y) {
         this.coordenada1Y = coordenada1Y;
     }
 
-    public int getCoordenada2X() {
+    public double getCoordenada2X() {
         return coordenada2X;
     }
 
-    public void setCoordenada2X(int coordenada2X) {
+    public void setCoordenada2X(double coordenada2X) {
         this.coordenada2X = coordenada2X;
     }
 
-    public int getCoordenada2Y() {
+    public double getCoordenada2Y() {
         return coordenada2Y;
     }
 
-    public void setCoordenada2Y(int coordenada2Y) {
+    public void setCoordenada2Y(double coordenada2Y) {
         this.coordenada2Y = coordenada2Y;
     }
 
-    public int getCoordenada3X() {
+    public double getCoordenada3X() {
         return coordenada3X;
     }
 
-    public void setCoordenada3X(int coordenada3X) {
+    public void setCoordenada3X(double coordenada3X) {
         this.coordenada3X = coordenada3X;
     }
 
-    public int getCoordenada3Y() {
+    public double getCoordenada3Y() {
         return coordenada3Y;
     }
 
-    public void setCoordenada3Y(int coordenada3Y) {
+    public void setCoordenada3Y(double coordenada3Y) {
         this.coordenada3Y = coordenada3Y;
     }
 

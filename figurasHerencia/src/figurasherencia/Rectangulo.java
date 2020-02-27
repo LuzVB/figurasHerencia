@@ -11,14 +11,14 @@ package figurasherencia;
  */
 public class Rectangulo extends Cuadrilatero {
     
-    private int lado2;
+    private double lado2;
 
-    public Rectangulo(int coordenada1X, int coordenada1Y, int coordenada2X, int coordenada2Y, int coordenada3X, int coordenada3Y, int coordenada4X, int coordenada4Y) {
+    public Rectangulo(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y, double coordenada4X, double coordenada4Y) {
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
     }
     
     //buscar como hacer para enviar el lado2 del rectangulo 
-    /*public Rectangulo(int lado1 , int lado2 ){
+    /*public Rectangulo(double lado1 , double lado2 ){
         super(lado1);
         this.lado2 = lado2;
     }*/

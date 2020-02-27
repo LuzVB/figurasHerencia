@@ -24,11 +24,16 @@ public class Main {
 //       System.out.print(FigurasGeometricas.getLado1()+"\n");
 //       System.out.print(FigurasGeometricas.getLado2());
         
-        Triangulo FigurasGeometricas = new Triangulo(1,0,5,0,5,4);
+        Triangulo FigurasGeometricas = new Triangulo(2,-2,13,-2,8,3);
+       FigurasGeometricas.hallarTipoTriangulo();
+       FigurasGeometricas.hallarArea();
        //FigurasGeometricas.hallarLado();
        System.out.print(FigurasGeometricas.getLado1()+"\n");
        System.out.print(FigurasGeometricas.getLado2()+"\n");
        System.out.print(FigurasGeometricas.getLado3());
+       System.out.print(FigurasGeometricas.getTipoTriangulo());
+       
+       
 
        
     /*

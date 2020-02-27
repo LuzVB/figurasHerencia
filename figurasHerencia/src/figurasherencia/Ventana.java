@@ -20,10 +20,10 @@ public class Ventana extends javax.swing.JFrame {
     private String coordenada2;
     private String coordenada3;
     private String coordenada4;
-    private int coordenada1X, coordenada1Y;
-    private int coordenada2X, coordenada2Y;
-    private int coordenada3X, coordenada3Y;
-    private int coordenada4X, coordenada4Y;
+    private double coordenada1X, coordenada1Y;
+    private double coordenada2X, coordenada2Y;
+    private double coordenada3X, coordenada3Y;
+    private double coordenada4X, coordenada4Y;
 
     /**
      * Creates new form ventana
@@ -96,26 +96,26 @@ public class Ventana extends javax.swing.JFrame {
         separacion = coordenada1.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada1X = Integer.parseInt(puntoX);
-        coordenada1Y = Integer.parseInt(puntoY);
+        coordenada1X = Double.parseDouble(puntoX);
+        coordenada1Y = Double.parseDouble(puntoY);
 
         separacion = coordenada2.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada2X = Integer.parseInt(puntoX);
-        coordenada2Y = Integer.parseInt(puntoY);
+        coordenada2X = Double.parseDouble(puntoX);
+        coordenada2Y = Double.parseDouble(puntoY);
 
         separacion = coordenada3.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada3X = Integer.parseInt(puntoX);
-        coordenada3Y = Integer.parseInt(puntoY);
+        coordenada3X = Double.parseDouble(puntoX);
+        coordenada3Y = Double.parseDouble(puntoY);
 
         separacion = coordenada4.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada4X = Integer.parseInt(puntoX);
-        coordenada4Y = Integer.parseInt(puntoY);
+        coordenada4X = Double.parseDouble(puntoX);
+        coordenada4Y = Double.parseDouble(puntoY);
     }
     
     private boolean recibirVerificacion(){
@@ -124,6 +124,7 @@ public class Ventana extends javax.swing.JFrame {
         switch (figura) {
             case "Cuadrado":
                 Cuadrado cudradoVerificar = new Cuadrado(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y,coordenada4X,coordenada4Y);
+                
                 poderGraficar = cudradoVerificar.verificarCoordenadas();
                 break;
             case "Rectangulo":
