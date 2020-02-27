@@ -15,4 +15,6 @@ public class Cuadrado  extends Cuadrilatero{
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
     }
     
+    
+    
 }

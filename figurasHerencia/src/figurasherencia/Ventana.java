@@ -20,10 +20,10 @@ public class Ventana extends javax.swing.JFrame {
     private String coordenada2;
     private String coordenada3;
     private String coordenada4;
-    private short coordenada1X,coordenada1Y;
-    private short coordenada2X,coordenada2Y;
-    private short coordenada3X,coordenada3Y;
-    private short coordenada4X,coordenada4Y;
+    private int coordenada1X, coordenada1Y;
+    private int coordenada2X, coordenada2Y;
+    private int coordenada3X, coordenada3Y;
+    private int coordenada4X, coordenada4Y;
 
     /**
      * Creates new form ventana
@@ -69,10 +69,9 @@ public class Ventana extends javax.swing.JFrame {
         tfCoordenada2.setVisible(false);
         tfCoordenada3.setVisible(false);
         tfCoordenada4.setVisible(false);
-        lbresultadoArea.setVisible(false);
-        lbresultadoPerimetro.setVisible(false);
-        lbresultadoTipoTriangulo.setVisible(false);
+        taResultados.setVisible(false);
         panelInformacionFiguras.setVisible(false);
+        btGraficar.setVisible(false);
     }
 
     // obtiene los datos ingresados en la parte grafica 
@@ -84,40 +83,63 @@ public class Ventana extends javax.swing.JFrame {
         coordenada2 = tfCoordenada1.getText();
         coordenada3 = tfCoordenada1.getText();
         coordenada4 = tfCoordenada1.getText();
-        
-        System.out.println(color);
+
     }
-    
+
     //obtiene las coordenadas en la forma x,y los separa para crear variables X y Y diferentes
-    private void seperarCoordenadas(){
+    private void seperarCoordenadas() {
         String puntoX, puntoY;
         String[] separacion;
-        
+
         obtenerDatos();
-        
+
         separacion = coordenada1.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada1X = Short.parseShort(puntoX);
-        coordenada1Y = Short.parseShort(puntoY);
-        
+        coordenada1X = Integer.parseInt(puntoX);
+        coordenada1Y = Integer.parseInt(puntoY);
+
         separacion = coordenada2.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada2X = Short.parseShort(puntoX);
-        coordenada2Y = Short.parseShort(puntoY);
-        
+        coordenada2X = Integer.parseInt(puntoX);
+        coordenada2Y = Integer.parseInt(puntoY);
+
         separacion = coordenada3.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada3X = Short.parseShort(puntoX);
-        coordenada3Y = Short.parseShort(puntoY);
-        
+        coordenada3X = Integer.parseInt(puntoX);
+        coordenada3Y = Integer.parseInt(puntoY);
+
         separacion = coordenada4.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada4X = Short.parseShort(puntoX);
-        coordenada4Y = Short.parseShort(puntoY);
+        coordenada4X = Integer.parseInt(puntoX);
+        coordenada4Y = Integer.parseInt(puntoY);
+    }
+    
+    private boolean recibirVerificacion(){
+        boolean poderGraficar = false;
+       // seperarCoordenadas();
+        switch (figura) {
+            case "Cuadrado":
+                Cuadrado cudradoVerificar = new Cuadrado(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y,coordenada4X,coordenada4Y);
+                poderGraficar = cudradoVerificar.verificarCoordenadas();
+                break;
+            case "Rectangulo":
+                Rectangulo rectanguloVerificar = new Rectangulo(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y,coordenada4X,coordenada4Y);
+                poderGraficar = rectanguloVerificar.verificarCoordenadas();
+                break;
+            case "Triangulo":
+                Triangulo trianguloVerificar = new Triangulo(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y);
+                poderGraficar = trianguloVerificar.verificarCoordenadas();
+                break;
+            default:
+                break;
+        }
+        //validar segun logica del cuadrado
+        //System.out.print(poderGraficar);
+        return poderGraficar;
     }
 
     /**
@@ -144,9 +166,9 @@ public class Ventana extends javax.swing.JFrame {
         lbNumero3 = new javax.swing.JLabel();
         lbNumero4 = new javax.swing.JLabel();
         panelInformacionFiguras = new javax.swing.JPanel();
-        lbresultadoPerimetro = new javax.swing.JLabel();
-        lbresultadoArea = new javax.swing.JLabel();
-        lbresultadoTipoTriangulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taResultados = new javax.swing.JTextArea();
+        btGraficar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,11 +204,9 @@ public class Ventana extends javax.swing.JFrame {
 
         panelInformacionFiguras.setBackground(new java.awt.Color(204, 255, 204));
 
-        lbresultadoPerimetro.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbresultadoArea.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbresultadoTipoTriangulo.setBackground(new java.awt.Color(255, 255, 255));
+        taResultados.setColumns(20);
+        taResultados.setRows(5);
+        jScrollPane1.setViewportView(taResultados);
 
         javax.swing.GroupLayout panelInformacionFigurasLayout = new javax.swing.GroupLayout(panelInformacionFiguras);
         panelInformacionFiguras.setLayout(panelInformacionFigurasLayout);
@@ -194,30 +214,23 @@ public class Ventana extends javax.swing.JFrame {
             panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInformacionFigurasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbresultadoPerimetro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbresultadoArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelInformacionFigurasLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(lbresultadoTipoTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         panelInformacionFigurasLayout.setVerticalGroup(
             panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInformacionFigurasLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(lbresultadoPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbresultadoArea, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelInformacionFigurasLayout.createSequentialGroup()
-                    .addGap(31, 31, 31)
-                    .addComponent(lbresultadoTipoTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(94, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        btGraficar.setText("Graficar ");
+        btGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGraficarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,7 +272,9 @@ public class Ventana extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbNumero4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(tfCoordenada4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(tfCoordenada4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btGraficar)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -297,7 +312,9 @@ public class Ventana extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbNumero4)
-                    .addComponent(tfCoordenada4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfCoordenada4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btGraficar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelInformacionFiguras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -324,9 +341,9 @@ public class Ventana extends javax.swing.JFrame {
                 tfCoordenada2.setVisible(true);
                 tfCoordenada3.setVisible(true);
                 tfCoordenada4.setVisible(true);
-                lbresultadoArea.setVisible(true);
-                lbresultadoPerimetro.setVisible(true);
-                lbresultadoTipoTriangulo.setVisible(false);
+                taResultados.setVisible(true);
+                taResultados.setEditable(false);
+                btGraficar.setVisible(true);
                 panelInformacionFiguras.setVisible(true);
                 break;
             case "Rectangulo":
@@ -339,9 +356,9 @@ public class Ventana extends javax.swing.JFrame {
                 tfCoordenada2.setVisible(true);
                 tfCoordenada3.setVisible(true);
                 tfCoordenada4.setVisible(true);
-                lbresultadoArea.setVisible(true);
-                lbresultadoPerimetro.setVisible(true);
-                lbresultadoTipoTriangulo.setVisible(false);
+                taResultados.setVisible(true);
+                taResultados.setEditable(false);
+                btGraficar.setVisible(true);
                 panelInformacionFiguras.setVisible(true);
                 break;
             case "Triangulo":
@@ -354,15 +371,23 @@ public class Ventana extends javax.swing.JFrame {
                 tfCoordenada2.setVisible(true);
                 tfCoordenada3.setVisible(true);
                 tfCoordenada4.setVisible(false);
-                lbresultadoArea.setVisible(true);
-                lbresultadoPerimetro.setVisible(true);
-                lbresultadoTipoTriangulo.setVisible(true);
+                taResultados.setVisible(true);
+                taResultados.setEditable(false);
+                btGraficar.setVisible(true);
                 panelInformacionFiguras.setVisible(true);
                 break;
             default:
                 break;
         }
     }//GEN-LAST:event_cbSeleccionFiguraActionPerformed
+
+    private void btGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGraficarActionPerformed
+        // TODO add your handling code here:
+        obtenerDatos();
+        seperarCoordenadas();
+        recibirVerificacion();
+        
+    }//GEN-LAST:event_btGraficarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,8 +426,10 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btGraficar;
     private javax.swing.JComboBox cbSeleccionColor;
     private javax.swing.JComboBox cbSeleccionFigura;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbCoordenadas;
     private javax.swing.JLabel lbNumero1;
     private javax.swing.JLabel lbNumero2;
@@ -410,10 +437,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel lbNumero4;
     private javax.swing.JLabel lbSeleccionColor;
     private javax.swing.JLabel lbSeleccionFigura;
-    private javax.swing.JLabel lbresultadoArea;
-    private javax.swing.JLabel lbresultadoPerimetro;
-    private javax.swing.JLabel lbresultadoTipoTriangulo;
     private javax.swing.JPanel panelInformacionFiguras;
+    private javax.swing.JTextArea taResultados;
     private javax.swing.JTextField tfCoordenada1;
     private javax.swing.JTextField tfCoordenada2;
     private javax.swing.JTextField tfCoordenada3;

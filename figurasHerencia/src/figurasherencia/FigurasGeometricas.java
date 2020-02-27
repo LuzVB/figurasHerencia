@@ -11,34 +11,34 @@ package figurasherencia;
  */
 public class FigurasGeometricas {
 
-    /**
-     *
-     */
-    private int lado1;
-    private int lado2;
-    private int area;
-    private int perimetro;
-    private int coordenada1X,coordenada1Y;
-    private int coordenada2X,coordenada2Y;
-    private int coordenada3X,coordenada3Y;
+    private double lado1;
+    private double lado2;
+    private double area;
+    private double perimetro;
+    private int coordenada1X, coordenada1Y;
+    private int coordenada2X, coordenada2Y;
+    private int coordenada3X, coordenada3Y;
     private String coordenada1;
     private String coordenada2;
     private String coordenada3;
     private String color;
 
     //pensar si hacer otro constructor para los lados
-    public FigurasGeometricas(int coordenada1X,int coordenada1Y,int coordenada2X,int coordenada2Y,int coordenada3X,int coordenada3Y) {
+    public FigurasGeometricas(int coordenada1X, int coordenada1Y, int coordenada2X, int coordenada2Y, int coordenada3X, int coordenada3Y) {
         this.coordenada1X = coordenada1X;
         this.coordenada1Y = coordenada1Y;
         this.coordenada2X = coordenada2X;
         this.coordenada2Y = coordenada2Y;
         this.coordenada3X = coordenada3X;
         this.coordenada3Y = coordenada3Y;
+        
+        hallarLado();
     }
-    
-    public FigurasGeometricas(int lado1){
+
+    /*public FigurasGeometricas(int lado1) {
         this.lado1 = lado1;
-    }
+    }*/
+
     //Recibe las coordenadas en pares , para validar si se puede hacer un cuadrado en caso de que si se envia un true
     public boolean verificarCoordenadas(){
         boolean verificar=true;
@@ -48,16 +48,34 @@ public class FigurasGeometricas {
         }
         return verificar;
     }
-    
+
+    //saca la distancia de un lado 
+    public void hallarLado() {
+        double raiz,raiz2;
+        double potencia1, potencia2;
+
+        potencia1 = Math.pow((this.coordenada2X - this.coordenada1X), 2);
+        potencia2 = Math.pow((this.coordenada2Y - this.coordenada1Y), 2);
+        raiz = Math.sqrt(potencia1+potencia2);
+        
+        this.lado1 = raiz ;
+        
+        potencia1 = Math.pow((this.coordenada3X - this.coordenada2X), 2);
+        potencia2 = Math.pow((this.coordenada3Y - this.coordenada2Y), 2);
+        raiz = Math.sqrt(potencia1+potencia2);
+        
+        this.lado2 = raiz ;
+    }
+
     //Genera los arrays de puntos x y y para graficar un poligono
-    public int[] arrayPuntosEnX(){
-        int puntosEnX[]={coordenada1X,coordenada2X,coordenada3X};
+    public int[] arrayPuntosEnX() {
+        int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
     }
-    
-    public int[] arrayPuntosEnY(){
-        int puntosEnY[]={coordenada1Y,coordenada2Y,coordenada3Y};
+
+    public int[] arrayPuntosEnY() {
+        int puntosEnY[] = {coordenada1Y, coordenada2Y, coordenada3Y};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnY;
     }
@@ -74,39 +92,43 @@ public class FigurasGeometricas {
 
     }
 
-    public int getLado1() {
+    public double getLado1() {
         return lado1;
     }
 
-    public void setLado1(int lado1) {
+    public void setLado1(double lado1) {
         this.lado1 = lado1;
     }
 
-    public int getLado2() {
+    public double getLado2() {
         return lado2;
     }
 
-    public void setLado2(int lado2) {
+    /**
+     *
+     */
+    public void setLado2(double lado2) {
         this.lado2 = lado2;
     }
+   
 
-    public int getArea() {
+    public double getArea() {
         return area;
     }
 
-    public void setArea(int area) {
+    public void setArea(double area) {
         this.area = area;
     }
 
-    public int getPerimetro() {
+    public double getPerimetro() {
         return perimetro;
     }
 
-    public void setPerimetro(int perimetro) {
+    public void setPerimetro(double perimetro) {
         this.perimetro = perimetro;
     }
-    
-     public int getCoordenada1X() {
+
+    public int getCoordenada1X() {
         return coordenada1X;
     }
 

@@ -18,9 +18,20 @@ public class Main {
      */
     public static void main(String[] args) {
 
-       new Ventana().setVisible(true);
-       /* FigurasGeometricas FigurasGeometricas = new FigurasGeometricas();
+      // new Ventana().setVisible(true);
+//       FigurasGeometricas FigurasGeometricas = new FigurasGeometricas(1,0,5,0,5,4);
+//       //FigurasGeometricas.hallarLado();
+//       System.out.print(FigurasGeometricas.getLado1()+"\n");
+//       System.out.print(FigurasGeometricas.getLado2());
+        
+        Triangulo FigurasGeometricas = new Triangulo(1,0,5,0,5,4);
+       //FigurasGeometricas.hallarLado();
+       System.out.print(FigurasGeometricas.getLado1()+"\n");
+       System.out.print(FigurasGeometricas.getLado2()+"\n");
+       System.out.print(FigurasGeometricas.getLado3());
 
+       
+    /*
         Scanner entradaEscaner = new Scanner(System.in);
         System.out.print("BIENVENIDO \n");
         System.out.print("Seleccione el tipo de figura: \n");
