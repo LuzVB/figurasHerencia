@@ -33,6 +33,12 @@ public class Main {
        
     /*
         Scanner entradaEscaner = new Scanner(System.in);
+=======
+       /*new Ventana().setVisible(true);*/
+
+
+        /*Scanner entradaEscaner = new Scanner(System.in);
+>>>>>>> Stashed changes
         System.out.print("BIENVENIDO \n");
         System.out.print("Seleccione el tipo de figura: \n");
         System.out.print("1.Cuadrado \n");

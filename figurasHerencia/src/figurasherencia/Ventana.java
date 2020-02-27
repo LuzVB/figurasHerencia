@@ -196,6 +196,12 @@ public class Ventana extends javax.swing.JFrame {
 
         lbNumero1.setText("1.");
 
+        tfCoordenada1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCoordenada1ActionPerformed(evt);
+            }
+        });
+
         lbNumero2.setText("2.");
 
         lbNumero3.setText("3.");
@@ -381,6 +387,7 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbSeleccionFiguraActionPerformed
 
+
     private void btGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGraficarActionPerformed
         // TODO add your handling code here:
         obtenerDatos();
@@ -388,6 +395,11 @@ public class Ventana extends javax.swing.JFrame {
         recibirVerificacion();
         
     }//GEN-LAST:event_btGraficarActionPerformed
+
+    private void tfCoordenada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCoordenada1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCoordenada1ActionPerformed
+
 
     /**
      * @param args the command line arguments

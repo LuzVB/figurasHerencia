@@ -151,9 +151,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Seleccione una figura"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Seleccione una figura"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbSeleccionFigura">
       <Properties>
@@ -205,6 +202,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCoordenada1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCoordenada1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNumero2">
       <Properties>
