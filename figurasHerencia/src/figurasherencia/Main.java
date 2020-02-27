@@ -18,7 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        FigurasGeometricas FigurasGeometricas = new FigurasGeometricas();
+       new Ventana().setVisible(true);
+       /* FigurasGeometricas FigurasGeometricas = new FigurasGeometricas();
 
         Scanner entradaEscaner = new Scanner(System.in);
         System.out.print("BIENVENIDO \n");
@@ -42,7 +43,7 @@ public class Main {
                 break;
             case 3:
                 break;
-        }
+        }*/
 
     }
 
