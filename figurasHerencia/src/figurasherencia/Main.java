@@ -18,21 +18,25 @@ public class Main {
      */
     public static void main(String[] args) {
 
-      // new Ventana().setVisible(true);
+      new Ventana().setVisible(true);
 //       FigurasGeometricas FigurasGeometricas = new FigurasGeometricas(1,0,5,0,5,4);
 //       //FigurasGeometricas.hallarLado();
 //       System.out.print(FigurasGeometricas.getLado1()+"\n");
 //       System.out.print(FigurasGeometricas.getLado2());
         
-        Triangulo FigurasGeometricas = new Triangulo(2,-2,13,-2,8,3);
+       Triangulo FigurasGeometricas = new Triangulo(0,0,4,0,2,3.4);
+       Rectangulo  Rectangulo= new Rectangulo(2,-2,13,-2,8,3,2,2);
+       
        FigurasGeometricas.hallarTipoTriangulo();
        FigurasGeometricas.hallarArea();
+       Rectangulo.hallarPerimetro();
+       Rectangulo.hallarArea();
        //FigurasGeometricas.hallarLado();
-       System.out.print(FigurasGeometricas.getLado1()+"\n");
-       System.out.print(FigurasGeometricas.getLado2()+"\n");
-       System.out.print(FigurasGeometricas.getLado3());
-       System.out.print(FigurasGeometricas.getTipoTriangulo());
-       
+       System.out.println(FigurasGeometricas.getLado1()+"LADO1\n");
+       System.out.println(FigurasGeometricas.getLado2()+"LADO2\n");
+       System.out.println(FigurasGeometricas.getLado3());
+       System.out.println(FigurasGeometricas.getTipoTriangulo());
+       System.out.print("OTRO"+Rectangulo.getPerimetro()+ "\n");
        
 
        
