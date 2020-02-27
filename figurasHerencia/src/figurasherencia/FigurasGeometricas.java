@@ -30,10 +30,10 @@ public class FigurasGeometricas {
     public FigurasGeometricas(int coordenada1X,int coordenada1Y,int coordenada2X,int coordenada2Y,int coordenada3X,int coordenada3Y) {
         this.coordenada1X = coordenada1X;
         this.coordenada1Y = coordenada1Y;
-        this.coordenada2X = coordenada1X;
-        this.coordenada2Y = coordenada1Y;
-        this.coordenada3X = coordenada1X;
-        this.coordenada3Y = coordenada1Y;
+        this.coordenada2X = coordenada2X;
+        this.coordenada2Y = coordenada2Y;
+        this.coordenada3X = coordenada3X;
+        this.coordenada3Y = coordenada3Y;
     }
     
     public FigurasGeometricas(int lado1){
@@ -41,8 +41,11 @@ public class FigurasGeometricas {
     }
     //Recibe las coordenadas en pares , para validar si se puede hacer un cuadrado en caso de que si se envia un true
     public boolean verificarCoordenadas(){
-        boolean verificar = false;
-        //validar segun logica del cuadrado
+        boolean verificar=true;
+        
+        if(this.coordenada1X==this.coordenada2X && this.coordenada2X==this.coordenada3X && this.coordenada1Y==this.coordenada2Y && this.coordenada2Y == this.coordenada3Y || this.coordenada1Y==this.coordenada2Y && this.coordenada2Y==this.coordenada3Y ){   
+            verificar = false;
+        }
         return verificar;
     }
     
