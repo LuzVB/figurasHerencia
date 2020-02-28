@@ -39,16 +39,16 @@ public class FigurasGeometricas {
      */
     private double coordenada3X, coordenada3Y;
     /**
-     * la variable coordenada1 almacena el valor de la primera cordenda
+     * la variable coordenada1 almacena el valor de la primera coordenda
      */
     private String coordenada1;
     
     /**
-     * la variable coordenada2 almacena el valor de la segunda cordenda
+     * la variable coordenada2 almacena el valor de la segunda coordenda
      */
     private String coordenada2;
     /**
-     * la variable coordenada3 almacena el valor de la tercera cordenda
+     * la variable coordenada3 almacena el valor de la tercera coordenda
      */
     private String coordenada3;
     /**
@@ -57,7 +57,6 @@ public class FigurasGeometricas {
     private String color;
     //Quitar decimales alas variables doubles
     //DecimalFormat decimales = new DecimalFormat("#.0");
-    //pensar si hacer otro constructor para los lados
     /**
      * Constructor que recibe los valores de las tres coordendas en X y Y  
      * @param coordenada1X valor de X de la primera coordenda 
@@ -74,10 +73,6 @@ public class FigurasGeometricas {
         this.coordenada2Y = coordenada2Y;
         this.coordenada3X = coordenada3X;
         this.coordenada3Y = coordenada3Y;
-
-//        System.out.print("1/"+coordenada1X+","+coordenada1Y+"\n");
-//        System.out.print("2/"+coordenada2X+","+coordenada2Y+"\n");
-//        System.out.print("3/"+coordenada3X+","+coordenada3Y+"\n");
         hallarLado();
     }
 

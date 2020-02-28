@@ -20,52 +20,14 @@ public class Main {
 
        new Ventana().setVisible(true);
 //       FigurasGeometricas FigurasGeometricas = new FigurasGeometricas(1,0,5,0,5,4);
-//       //FigurasGeometricas.hallarLado();
-//       System.out.print(FigurasGeometricas.getLado1()+"\n");
-//       System.out.print(FigurasGeometricas.getLado2());
+//       FigurasGeometricas.hallarLado();
+
         
-//        Triangulo FigurasGeometricas = new Triangulo(2,-2,13,-2,8,3);
+//       Triangulo FigurasGeometricas = new Triangulo(2,-2,13,-2,8,3);
 //       FigurasGeometricas.hallarTipoTriangulo();
 //       FigurasGeometricas.hallarArea();
-//       //FigurasGeometricas.hallarLado();
-//       System.out.print(FigurasGeometricas.getLado1()+"\n");
-//       System.out.print(FigurasGeometricas.getLado2()+"\n");
-//       System.out.print(FigurasGeometricas.getLado3());
-//       System.out.print(FigurasGeometricas.getTipoTriangulo());
+//       FigurasGeometricas.hallarLado();
 //       
-       
-
-       
-    /*
-        Scanner entradaEscaner = new Scanner(System.in);
-=======
-       /*new Ventana().setVisible(true);*/
-
-
-        /*Scanner entradaEscaner = new Scanner(System.in);
->>>>>>> Stashed changes
-        System.out.print("BIENVENIDO \n");
-        System.out.print("Seleccione el tipo de figura: \n");
-        System.out.print("1.Cuadrado \n");
-        System.out.print("2.Rectangulo \n");
-        System.out.print("3.Triangulo \n");
-        byte tipoFigura = entradaEscaner.nextByte();
-
-        switch (tipoFigura) {
-            case 1:
-
-                System.out.println("Ingrese el valor del lado ");
-                int lado1 = entradaEscaner.nextInt();
-                FigurasGeometricas.hallarArea(lado1);
-                FigurasGeometricas.hallarPerimetro(lado1);
-                System.out.println("El valor del area es: \n" + FigurasGeometricas.getArea());
-                System.out.println("El valor del perimetro es :\n" + FigurasGeometricas.getPerimetro());
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-        }*/
 
     }
 

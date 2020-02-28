@@ -245,7 +245,12 @@ public class Ventana extends javax.swing.JFrame {
                 break;
         }
     }
-
+    /**
+     * Metodo que pinta la figura en el plano cartesiano 
+     * @param arrayPuntosEnX array de los puntos en X
+     * @param arrayPuntosEnY array de los puntos en Y
+     * @param ColorFigura  color que se ha seleccionado
+     */
     private void pintarFigura(int[] arrayPuntosEnX, int[] arrayPuntosEnY, String ColorFigura) {
         Graphics ventana = getGraphics();
 
@@ -551,7 +556,10 @@ public class Ventana extends javax.swing.JFrame {
     private void tfCoordenada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCoordenada1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCoordenada1ActionPerformed
-
+    /**
+     * Metodo que limpia la ventana
+     * @param evt 
+     */
     private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
         Graphics ventana=getGraphics();
         super.paint(ventana);

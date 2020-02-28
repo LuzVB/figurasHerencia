@@ -75,17 +75,10 @@ public class Triangulo extends FigurasGeometricas {
     public void hallarArea() {
         double semiPerimetro;
         double raiz;
-//        double ladoA,ladoB,ladoC;
-//        ladoA = 3;
-//        ladoB = 4;
-//        ladoC = 5;
+
         semiPerimetro = (getLado1() + getLado2() + this.lado3) / 2;
 
-//        raiz = Math.sqrt(semiPerimetro * ((semiPerimetro - getLado1()) * (semiPerimetro - getLado2()) * (semiPerimetro - this.lado3)));
         raiz = Math.sqrt((semiPerimetro*(semiPerimetro-getLado1()))*(semiPerimetro-getLado2())*(semiPerimetro-this.lado3));
-
-//        System.out.print("semiPerimetro " + semiPerimetro);
-//        System.out.print("raiz " + raiz);
 
         setArea(raiz);
     }
@@ -120,13 +113,6 @@ public class Triangulo extends FigurasGeometricas {
         return resultado;
     }
 
-
-    /* public Triangulo(double lado1 , double lado2 , double lado3){
-     super(lado1);
-     this.lado2 = lado2;
-     this.lado3 = lado3;
-     }
-    */
     
     /**
      * Metodo para mostrar el valor del tercer lado

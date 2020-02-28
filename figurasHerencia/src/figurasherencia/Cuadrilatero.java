@@ -17,7 +17,7 @@ public class Cuadrilatero extends FigurasGeometricas {
      */
     private double coordenada4X,coordenada4Y;
     /**
-     * 
+     *  la variable coordenada4 almacena el valor de la cuarta coordenda
      */
     private String coordenada4;
     /**
@@ -78,7 +78,10 @@ public class Cuadrilatero extends FigurasGeometricas {
         }
         return verificar;
     }
-
+    /**
+     * Metodo que calcula  las cuatro cordenadas en X para graficar 
+     * @return  puntosEnX retorna un array 
+     */
     @Override
     public int[] arrayPuntosEnX() {
         int coordenadaX1 = (int) getCoordenada1X();
@@ -93,7 +96,10 @@ public class Cuadrilatero extends FigurasGeometricas {
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
     }
-
+     /**
+     * Metodo que calcula  las cuatro cordenadas en Y para graficar 
+     * @return  puntosEnY retorna un array 
+     */
     @Override
     public int[] arrayPuntosEnY() {
         int coordenadaY1 = (int) getCoordenada1Y();
@@ -108,7 +114,10 @@ public class Cuadrilatero extends FigurasGeometricas {
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnY;
     }
-
+     /**
+       * Metodo para mostrar el valor de X  de la cuarta coordenda
+       * @return coordenada3X retorna el valor de X de la cuarta coordenda
+      */
     public double getCoordenada4X() {
         return coordenada4X;
     }
@@ -133,17 +142,18 @@ public class Cuadrilatero extends FigurasGeometricas {
     public void setCoordenada4Y(short coordenada4Y) {
         this.coordenada4Y = coordenada4Y;
     }
-    /**
-     * 
-     * @return 
+     /**
+     * Metodo para mostrar el valor de la cuarta coordenada
+     * @return coordenada1 retorna el valor de la cuarta coordenada
      */
     public String getCoordenada4() {
         return coordenada4;
     }
     /**
-     * 
-     * @param coordenada4 
+     * Metodo para modificar el valor de la cuarta coordenda
+     * @param coordenada4 valor a modificar en la cuarta coordenda
      */
+
     public void setCoordenada4(String coordenada4) {
         this.coordenada4 = coordenada4;
     }
