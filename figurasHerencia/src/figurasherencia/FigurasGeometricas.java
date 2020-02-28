@@ -38,9 +38,22 @@ public class FigurasGeometricas {
      * las variables coordenada3X y coordenada3Y   almacenan los valores de  X y Y de la tercera coordenada
      */
     private double coordenada3X, coordenada3Y;
+    /**
+     * la variable coordenada1 almacena el valor de la primera cordenda
+     */
     private String coordenada1;
+    
+    /**
+     * la variable coordenada2 almacena el valor de la segunda cordenda
+     */
     private String coordenada2;
+    /**
+     * la variable coordenada3 almacena el valor de la tercera cordenda
+     */
     private String coordenada3;
+    /**
+     * la variable color almacena el color seleccionado 
+     */
     private String color;
     //Quitar decimales alas variables doubles
     //DecimalFormat decimales = new DecimalFormat("#.0");
@@ -110,6 +123,10 @@ public class FigurasGeometricas {
      * @return puntoEnX retorna un array
      */
     public int[] arrayPuntosEnX() {
+       //int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
+
+
+
         int coordenadaX1 = (int) this.coordenada1X;
         int coordenadaX2 = (int) this.coordenada2X;
         int coordenadaX3 = (int) this.coordenada3X;
@@ -152,9 +169,9 @@ public class FigurasGeometricas {
         this.perimetro = lado1 * 4;
     }
 
-    public String resultadoOperaciones() {
-        String resultado = "El area es: " + area + "\n" + "El perimetro es: " + perimetro;
-
+    public String resultadoOperaciones(){
+        String resultado = "El area es: " + area +"\n"+ "El perimetro es: " + perimetro;
+        
         return resultado;
     }
     /**
@@ -318,37 +335,59 @@ public class FigurasGeometricas {
         this.coordenada3Y = coordenada3Y;
     }
     /**
-     * Metodo para mostrar el valor de la segunda cordenada en X
-     * @return 
+     * Metodo para mostrar el valor de la primera coordenada
+     * @return coordenada1 retorna el valor de la primera coordenada
      */
     public String getCoordenada1() {
         return coordenada1;
     }
+    /**
+     * Metodo para modificar el valor de la primera coordenda
+     * @param coordenada1 valor a modificar en la primera coordenda
+     */
 
     public void setCoordenada1(String coordenada1) {
         this.coordenada1 = coordenada1;
     }
-
+    /**
+     * Metodo para mostrar el valor de la segunda coordenda
+     * @return coordenada2 retorna el valor de la segunda coordenda
+     */
     public String getCoordenada2() {
         return coordenada2;
     }
-
+    /**
+     * Metodo para modificar el valor de la segunda coordenda
+     * @param coordenada2 valor a modificar en la segunda coordenda
+     */
     public void setCoordenada2(String coordenada2) {
         this.coordenada2 = coordenada2;
     }
-
+    /**
+     * Metodo para mostrar el valor de la tercera coordenda
+     * @return coordenda3 retorna el valor de la tercera coordenda
+     */
     public String getCoordenada3() {
         return coordenada3;
     }
-
+   /**
+     * Metodo para modificar el valor de la tercera coordenda
+     * @param coordenada3 valor a modificar en la tercera coordenda
+    */
     public void setCoordenada3(String coordenada3) {
         this.coordenada3 = coordenada3;
     }
-
+    /**
+     * Metodo para mostrar cual a sido el color que se ha escogido
+     * @return color retorna el color seleccionado
+     */
     public String getColor() {
         return color;
     }
-
+    /**
+     * Metodo para modificar el color que se ha seleccionado 
+     * @param color modificar el color seleccionado
+     */
     public void setColor(String color) {
         this.color = color;
     }

@@ -11,11 +11,11 @@ package figurasherencia;
  */
 public class Triangulo extends FigurasGeometricas {
     /**
-     * 
+     *la variable lado3 almacena el valor del tercer lado del triangulo
      */
     private double lado3;
     /**
-     * 
+     * la variable tipoTriangulo almacena el tipo del triangulo
      */
     private String tipoTriangulo;
     /**
@@ -109,7 +109,10 @@ public class Triangulo extends FigurasGeometricas {
             setPerimetro(getLado2() + getLado1() + this.lado3);
         }
     }
-    
+    /**
+     * Metodo que muestra los resultados del area, perimetro y el tipo del triangulo
+     * @return  resultado retorna el resultado del area,perimetro y tipo del triangulo
+     */
     @Override
     public String resultadoOperaciones(){
         String resultado = "El area es: " + getArea() + "\n"+"El perimetro es: " + getPerimetro() +"\n"+"El tipo de triangulo es: "+tipoTriangulo;

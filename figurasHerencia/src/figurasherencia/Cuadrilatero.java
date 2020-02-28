@@ -37,8 +37,11 @@ public class Cuadrilatero extends FigurasGeometricas {
         this.coordenada4X = coordenada4X;
         this.coordenada4Y = coordenada4Y;
     }
-
-    //Verificar si es un cuadrado o un rectangulo 
+     /**
+      * Metodo para verificar si la figura es un cuadrado ó un rectangulo
+      * @param tipoCuadrado identificar que tipo de figura es 
+      * @return verificar retorna un false si ninguna de las condiciones se cumple
+      */
     public boolean verificarCuadrilatero(String tipoCuadrado) {
 //        boolean verificarCoord=verificarCoordenadas();
         boolean verificar = false;

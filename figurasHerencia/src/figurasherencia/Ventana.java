@@ -16,20 +16,49 @@ import javax.swing.JOptionPane;
  * @author Luz
  */
 public class Ventana extends javax.swing.JFrame {
-
+    /**
+     * la  variable figura  almacena el tipo de figura seleccionado en el menu desplegable
+     */
     private String figura;
+    /**
+     * la variable color almacena el color seleccionado en el menu desplegable
+     */
     private String color;
+    /**
+     * la variable coordenada1 almacena el valor de la primera cordenda
+     */
     private String coordenada1;
+    /**
+     * la variable coordenada2 almacena el valor de la segunda cordenda
+     */
     private String coordenada2;
+    /**
+     * la variable coordenada3 almacena el valor de la tercera cordenda
+     */
     private String coordenada3;
+    /**
+     * la variable coordenada4  almacena el valor de la cuarta cordenda
+     */
     private String coordenada4;
+    /**
+     * las variables coordenada1X y coordenada1Y  almacenan los valores de  X y Y de la primera coordenada 
+     */
     private double coordenada1X, coordenada1Y;
+    /**
+     * las variables coordenada2X y coordenada2Y  almacenan los valores de  X y Y de la segunda coordenada 
+     */
     private double coordenada2X, coordenada2Y;
+    /**
+    * las variables coordenada3X y coordenada3Y  almacenan los valores de  X y Y de la tercera coordenada 
+    */
     private double coordenada3X, coordenada3Y;
+    /**
+     * las variables coordenada4X y coordenada4Y  almacenan los valores de  X y Y de la cuarta coordenada 
+     */
     private double coordenada4X, coordenada4Y;
 
     /**
-     * Creates new form ventana
+     * Metodo que crea la ventana del formulario
      */
     public Ventana() {
         initComponents();
@@ -37,10 +66,14 @@ public class Ventana extends javax.swing.JFrame {
         //this.getContentPane().setBackground(Color.white);
     }
 
-    /*cambiar por comentario luz:
+    /*
      el metodo paint se sobreescribe de la clase JFrame
      para inicializar el plano cartesiano y hacer visible = false
      a los textFile
+     */
+    /**
+     * Metodo para inicializar el plano cartesiano 
+     * @param ventana dimensiones del plano cartesiano
      */
     @Override
     public void paint(Graphics ventana) {
@@ -75,8 +108,9 @@ public class Ventana extends javax.swing.JFrame {
         panelInformacionFiguras.setVisible(false);
         btGraficar.setVisible(false);
     }
-
-    // obtiene los datos ingresados en la parte grafica 
+    /**
+     * Metodo que obtiene los datos ingresados en la interfaz
+     */
     private void obtenerDatos() {
         //Para traer el valor del menu desplegable
         figura = cbSeleccionFigura.getSelectedItem().toString();
@@ -87,8 +121,9 @@ public class Ventana extends javax.swing.JFrame {
         coordenada4 = tfCoordenada4.getText();
 
     }
-
-    //obtiene las coordenadas en la forma x,y los separa para crear variables X y Y diferentes
+    /**
+     * Metodo que obtiene las coordendas en la forma X,Y y los separa crear variables independientes X y Y
+     */
     private void seperarCoordenadas() {
         String puntoX, puntoY;
         String[] separacion;
@@ -125,7 +160,10 @@ public class Ventana extends javax.swing.JFrame {
         this.coordenada4Y = Double.parseDouble(puntoY);
 
     }
-
+    /**
+     * Metodo que verifica las coordendas de cada una de las figuras
+     * @return poderGraficar retorna un true si se puede dibujar la figura
+     */
     private boolean recibirVerificacion() {
         boolean poderGraficar = false;
         seperarCoordenadas();
@@ -155,7 +193,9 @@ public class Ventana extends javax.swing.JFrame {
         //System.out.print(poderGraficar);
         return poderGraficar;
     }
-
+    /**
+     * Metodo para graficar cada una de las figuras segun correspndan
+     */
     private void graficar() {
         boolean poderGraficar = recibirVerificacion();
         String resultados;
@@ -435,9 +475,11 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    // Accion al momento de seleccionar una figura
-    //cambiar la visibilidad del panel al graficar 
+    
+    /**
+     * Metodo para seleccionar el tipo de figura y cambiar la visibilidad del panel al graficar
+     * @param evt 
+     */
     private void cbSeleccionFiguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSeleccionFiguraActionPerformed
         // TODO add your handling code here:
         String figura2 = cbSeleccionFigura.getSelectedItem().toString();
@@ -492,7 +534,11 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbSeleccionFiguraActionPerformed
 
-
+    /**
+     * Metodo que llama al metodo graficar
+     *
+     * @param evt
+     */
     private void btGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGraficarActionPerformed
         // TODO add your handling code here:
         //obtenerDatos();
@@ -546,8 +592,10 @@ public class Ventana extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+       /**
+        * Metodo que crea y muestra el formulario
+        */
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ventana().setVisible(true);
