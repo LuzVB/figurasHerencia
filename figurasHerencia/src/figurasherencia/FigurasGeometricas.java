@@ -5,6 +5,7 @@
  */
 package figurasherencia;
 
+
 /**
  *
  * @author Valentina Sarmiento
@@ -22,6 +23,10 @@ public class FigurasGeometricas {
     private String coordenada2;
     private String coordenada3;
     private String color;
+
+    //Quitar decimales alas variables doubles
+    //DecimalFormat decimales = new DecimalFormat("#.0");
+
 
     //pensar si hacer otro constructor para los lados
     public FigurasGeometricas(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y) {
@@ -81,7 +86,11 @@ public class FigurasGeometricas {
     }
 
     public int[] arrayPuntosEnY() {
-//        int puntosEnY[] = {coordenada1Y, coordenada2Y, coordenada3Y};
+        
+        int coordenadaY1 = (int) this.coordenada1Y;
+        int coordenadaY2 = (int) this.coordenada2Y;
+        int coordenadaY3 = (int) this.coordenada3Y;
+//        int puntosEnY[] = {coordenadaY1, coordenadaY2, coordenadaY3};
 //        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
 //        return puntosEnY;
          int puntosEnX[]= {1, 2, 3};
