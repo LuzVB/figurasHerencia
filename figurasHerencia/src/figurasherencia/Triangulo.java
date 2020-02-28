@@ -24,11 +24,8 @@ public class Triangulo extends FigurasGeometricas {
         double potencia1, potencia2;
 
         potencia1 = Math.pow((getCoordenada2X() - getCoordenada1X()), 2);
-        System.out.print("1/" + potencia1 + "\n");
         potencia2 = Math.pow((getCoordenada2Y() - getCoordenada1Y()), 2);
-        System.out.print("2/" + potencia2 + "\n");
         raiz = Math.sqrt(potencia1 + potencia2);
-        System.out.print("3/" + raiz + "\n");
 
         setLado1(raiz);
 
@@ -77,6 +74,7 @@ public class Triangulo extends FigurasGeometricas {
 
     @Override
     public void hallarPerimetro() {
+        hallarTipoTriangulo();
         if (tipoTriangulo.equals("Equilatero")) {
             setPerimetro(getLado1() * 3);
         } else if (tipoTriangulo.equals("Isosceles")) {
@@ -90,6 +88,13 @@ public class Triangulo extends FigurasGeometricas {
         } else {
             setPerimetro(getLado2() + getLado1() + this.lado3);
         }
+    }
+    
+    @Override
+    public String resultadoOperaciones(){
+        String resultado = "El area es: " + getArea() + "\n"+"El perimetro es: " + getPerimetro() +"\n"+"El tipo de triangulo es: "+tipoTriangulo;
+        
+        return resultado;
     }
 
 

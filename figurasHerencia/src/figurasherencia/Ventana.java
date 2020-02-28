@@ -7,6 +7,7 @@ package figurasherencia;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +31,6 @@ public class Ventana extends javax.swing.JFrame {
      */
     public Ventana() {
         initComponents();
-        coordenada4 = "0,0";
         //le da color a la ventana 
         //this.getContentPane().setBackground(Color.white);
     }
@@ -80,9 +80,9 @@ public class Ventana extends javax.swing.JFrame {
         figura = cbSeleccionFigura.getSelectedItem().toString();
         color = cbSeleccionColor.getSelectedItem().toString();
         coordenada1 = tfCoordenada1.getText();
-        coordenada2 = tfCoordenada1.getText();
-        coordenada3 = tfCoordenada1.getText();
-        coordenada4 = tfCoordenada1.getText();
+        coordenada2 = tfCoordenada2.getText();
+        coordenada3 = tfCoordenada3.getText();
+        coordenada4 = tfCoordenada4.getText();
 
     }
 
@@ -96,43 +96,54 @@ public class Ventana extends javax.swing.JFrame {
         separacion = coordenada1.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada1X = Double.parseDouble(puntoX);
-        coordenada1Y = Double.parseDouble(puntoY);
+
+        this.coordenada1X = Double.parseDouble(puntoX);
+        this.coordenada1Y = Double.parseDouble(puntoY);
 
         separacion = coordenada2.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada2X = Double.parseDouble(puntoX);
-        coordenada2Y = Double.parseDouble(puntoY);
+        this.coordenada2X = Double.parseDouble(puntoX);
+        this.coordenada2Y = Double.parseDouble(puntoY);
 
         separacion = coordenada3.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada3X = Double.parseDouble(puntoX);
-        coordenada3Y = Double.parseDouble(puntoY);
+        this.coordenada3X = Double.parseDouble(puntoX);
+        this.coordenada3Y = Double.parseDouble(puntoY);
+
+        if (figura.equals("Triangulo")) {
+            coordenada4 = "0,0";
+        }
 
         separacion = coordenada4.split(",");
         puntoX = separacion[0];
         puntoY = separacion[1];
-        coordenada4X = Double.parseDouble(puntoX);
-        coordenada4Y = Double.parseDouble(puntoY);
+        this.coordenada4X = Double.parseDouble(puntoX);
+        this.coordenada4Y = Double.parseDouble(puntoY);
+
     }
-    
-    private boolean recibirVerificacion(){
+
+    private boolean recibirVerificacion() {
         boolean poderGraficar = false;
-       // seperarCoordenadas();
+        seperarCoordenadas();
         switch (figura) {
             case "Cuadrado":
-                Cuadrado cudradoVerificar = new Cuadrado(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y,coordenada4X,coordenada4Y);
-                
-                poderGraficar = cudradoVerificar.verificarCoordenadas();
+                Cuadrado cudradoVerificar = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                poderGraficar = cudradoVerificar.verificarCuadrilatero("Cuadrado");
+                if (poderGraficar == true) {
+                    poderGraficar = cudradoVerificar.verificarCoordenadas();
+                }
                 break;
             case "Rectangulo":
-                Rectangulo rectanguloVerificar = new Rectangulo(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y,coordenada4X,coordenada4Y);
-                poderGraficar = rectanguloVerificar.verificarCoordenadas();
+                Rectangulo rectanguloVerificar = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                poderGraficar = rectanguloVerificar.verificarCuadrilatero("Rectangulo");
+                if (poderGraficar == true) {
+                    poderGraficar = rectanguloVerificar.verificarCoordenadas();
+                }
                 break;
             case "Triangulo":
-                Triangulo trianguloVerificar = new Triangulo(coordenada1X,coordenada1Y,coordenada2X,coordenada2Y,coordenada3X,coordenada3Y);
+                Triangulo trianguloVerificar = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
                 poderGraficar = trianguloVerificar.verificarCoordenadas();
                 break;
             default:
@@ -141,6 +152,50 @@ public class Ventana extends javax.swing.JFrame {
         //validar segun logica del cuadrado
         //System.out.print(poderGraficar);
         return poderGraficar;
+    }
+
+    private void graficar() {
+        boolean poderGraficar = recibirVerificacion();
+        String resultados;
+
+        switch (figura) {
+            case "Cuadrado":
+                if (poderGraficar == true) {
+                    Cuadrado cudradoGrficar = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    cudradoGrficar.hallarArea();
+                    cudradoGrficar.hallarPerimetro();
+                    resultados = cudradoGrficar.resultadoOperaciones();
+                    taResultados.setText(resultados);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Rectangulo":
+                if (poderGraficar == true) {
+                    Rectangulo rectanguloGraficar = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    rectanguloGraficar.hallarArea();
+                    rectanguloGraficar.hallarPerimetro();
+                    resultados = rectanguloGraficar.resultadoOperaciones();
+                    taResultados.setText(resultados);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "Triangulo":
+                Triangulo trianguloVerificar = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                if (poderGraficar == true) {
+                    Triangulo trianguloGraficar = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                    trianguloGraficar.hallarPerimetro();
+                    trianguloGraficar.hallarArea();
+                    resultados = trianguloGraficar.resultadoOperaciones();
+                    taResultados.setText(resultados);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -336,8 +391,8 @@ public class Ventana extends javax.swing.JFrame {
     //cambiar la visibilidad del panel al graficar 
     private void cbSeleccionFiguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSeleccionFiguraActionPerformed
         // TODO add your handling code here:
-        obtenerDatos();
-        switch (figura) {
+        String figura2 = cbSeleccionFigura.getSelectedItem().toString();
+        switch (figura2) {
             case "Cuadrado":
                 lbCoordenadas.setVisible(true);
                 lbNumero1.setVisible(true);
@@ -391,16 +446,16 @@ public class Ventana extends javax.swing.JFrame {
 
     private void btGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGraficarActionPerformed
         // TODO add your handling code here:
-        obtenerDatos();
-        seperarCoordenadas();
-        recibirVerificacion();
-        
+        //obtenerDatos();
+        // seperarCoordenadas();
+        // recibirVerificacion();
+        graficar();
+
     }//GEN-LAST:event_btGraficarActionPerformed
 
     private void tfCoordenada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCoordenada1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCoordenada1ActionPerformed
-
 
     /**
      * @param args the command line arguments

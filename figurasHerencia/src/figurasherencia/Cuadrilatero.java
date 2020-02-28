@@ -10,44 +10,76 @@ package figurasherencia;
  * @author Luz
  */
 public class Cuadrilatero extends FigurasGeometricas {
-    
-    private double coordenada4X,coordenada4Y;
+
+    private double coordenada4X, coordenada4Y;
     private String coordenada4;
 
-    public Cuadrilatero(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y,double coordenada4X, double coordenada4Y ) {
+    public Cuadrilatero(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y, double coordenada4X, double coordenada4Y) {
         super(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
         this.coordenada4X = coordenada4X;
         this.coordenada4Y = coordenada4Y;
     }
-    
+
     //Verificar si es un cuadrado o un rectangulo 
-    public boolean verificarCuadrilatero(){
-        boolean verificar=true;
-        //si son iguales es un Cuadrado
-        if(getLado1() == getLado2()){
-            return verificar=true;
+    public boolean verificarCuadrilatero(String tipoCuadrado) {
+//        boolean verificarCoord=verificarCoordenadas();
+        boolean verificar = false;
+        if (tipoCuadrado.equals("Cuadrado")) {
+            if(getLado1() == getLado2()){
+                System.out.print("Entro al If ladoIgual \n");
+                return verificar = true;
+            }
+            else{
+               return verificar = false; 
+            }
+        } else if (tipoCuadrado.equals("Rectangulo")) {
+            if(getLado1() == getLado2()){
+                System.out.print("Entro al If ladoIgual \n");
+                return verificar = false;
+            }
+            else{
+               return verificar = true; 
+            }
+        } else {
+            return verificar = false;
         }
-        else{
-            return verificar=false;//rectangulo
-        }
+
+//        if(verificarCoord == true){
+//            //si son iguales es un Cuadrado
+//            if(getLado1() == getLado2() && tipoCuadrado.equals("Cuadrado")){
+//                System.out.print("Entro al If VCC \n");
+//                return verificar=true;
+//            }
+//            else if(getLado1() != getLado2() && tipoCuadrado.equals("Rectangulo")){
+//                System.out.print("Entro al else \n");
+//                return verificar=true;//rectangulo
+//            }
+//            else{
+//                return verificar=false;
+//            }
+//        }
+//        else{
+//            return verificar=false;
+//        }
     }
-    
-    
-    
+
     //verificar coordenadas para No dibujar un ROMBO o un RomBoide
     @Override
-    public boolean verificarCoordenadas(){
-        boolean verificar=false;
-        
-        if(getCoordenada1Y()== getCoordenada2Y() && getCoordenada2X() == getCoordenada3X() && getCoordenada3Y() == this.coordenada4Y 
-           && this.coordenada4X == getCoordenada1X()){   
+    public boolean verificarCoordenadas() {
+        boolean verificar = false;
+
+//        if(getCoordenada1Y()== getCoordenada2Y() && getCoordenada2X() == getCoordenada3X() && getCoordenada3Y() == this.coordenada4Y 
+//           && this.coordenada4X == getCoordenada1X()){   
+//            verificar = true;
+//        }
+        if (getCoordenada1Y() == getCoordenada2Y() && getCoordenada2X() == getCoordenada3X() && getCoordenada3Y() == this.coordenada4Y && this.coordenada4X == getCoordenada1X()) {
             verificar = true;
+            System.out.print("Entro al If VC \n");
         }
-        
+
         return verificar;
     }
-    
-    
+
 //    @Override
 //    public  double[] arrayPuntosEnX(){
 //        double puntosEnX[]={getCoordenada1X(),getCoordenada2X(),getCoordenada3X(),coordenada4X};
@@ -62,8 +94,6 @@ public class Cuadrilatero extends FigurasGeometricas {
 //        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
 //        return puntosEnY;
 //    }
-    
-    
     public double getCoordenada4X() {
         return coordenada4X;
     }
@@ -87,5 +117,5 @@ public class Cuadrilatero extends FigurasGeometricas {
     public void setCoordenada4(String coordenada4) {
         this.coordenada4 = coordenada4;
     }
-     
+
 }

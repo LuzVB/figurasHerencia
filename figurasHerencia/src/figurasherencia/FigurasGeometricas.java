@@ -32,9 +32,9 @@ public class FigurasGeometricas {
         this.coordenada3X = coordenada3X;
         this.coordenada3Y = coordenada3Y;
         
-        System.out.print("1/"+coordenada1X+","+coordenada1Y+"\n");
-        System.out.print("2/"+coordenada2X+","+coordenada2Y+"\n");
-        System.out.print("3/"+coordenada3X+","+coordenada3Y+"\n");
+//        System.out.print("1/"+coordenada1X+","+coordenada1Y+"\n");
+//        System.out.print("2/"+coordenada2X+","+coordenada2Y+"\n");
+//        System.out.print("3/"+coordenada3X+","+coordenada3Y+"\n");
         
         
         hallarLado();
@@ -74,7 +74,7 @@ public class FigurasGeometricas {
 
     //Genera los arrays de puntos x y y para graficar un poligono
     public int[] arrayPuntosEnX() {
-       // int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
+       //int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
         int puntosEnX[]= {1, 2, 3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
@@ -97,8 +97,10 @@ public class FigurasGeometricas {
         this.perimetro = lado1 * 4;
     }
 
-    public void pintar() {
-
+    public String resultadoOperaciones(){
+        String resultado = "El area es: " + area +"\n"+ "El perimetro es: " + perimetro;
+        
+        return resultado;
     }
 
     public double getLado1() {
