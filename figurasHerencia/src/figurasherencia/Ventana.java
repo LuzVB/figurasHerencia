@@ -5,8 +5,10 @@
  */
 package figurasherencia;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JOptionPane;
 
 /**
@@ -162,6 +164,8 @@ public class Ventana extends javax.swing.JFrame {
             case "Cuadrado":
                 if (poderGraficar == true) {
                     Cuadrado cudradoGrficar = new Cuadrado(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    cudradoGrficar.setColor(color);
+                    pintarFigura(cudradoGrficar.arrayPuntosEnX(), cudradoGrficar.arrayPuntosEnY(), cudradoGrficar.getColor());
                     cudradoGrficar.hallarArea();
                     cudradoGrficar.hallarPerimetro();
                     resultados = cudradoGrficar.resultadoOperaciones();
@@ -173,6 +177,8 @@ public class Ventana extends javax.swing.JFrame {
             case "Rectangulo":
                 if (poderGraficar == true) {
                     Rectangulo rectanguloGraficar = new Rectangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y, coordenada4X, coordenada4Y);
+                    rectanguloGraficar.setColor(color);
+                    pintarFigura(rectanguloGraficar.arrayPuntosEnX(), rectanguloGraficar.arrayPuntosEnY(), rectanguloGraficar.getColor());
                     rectanguloGraficar.hallarArea();
                     rectanguloGraficar.hallarPerimetro();
                     resultados = rectanguloGraficar.resultadoOperaciones();
@@ -185,6 +191,8 @@ public class Ventana extends javax.swing.JFrame {
                 Triangulo trianguloVerificar = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
                 if (poderGraficar == true) {
                     Triangulo trianguloGraficar = new Triangulo(coordenada1X, coordenada1Y, coordenada2X, coordenada2Y, coordenada3X, coordenada3Y);
+                    trianguloGraficar.setColor(color);
+                    pintarFigura(trianguloGraficar.arrayPuntosEnX(), trianguloGraficar.arrayPuntosEnY(), trianguloGraficar.getColor());
                     trianguloGraficar.hallarPerimetro();
                     trianguloGraficar.hallarArea();
                     resultados = trianguloGraficar.resultadoOperaciones();
@@ -192,6 +200,40 @@ public class Ventana extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Error en coordenadas", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void pintarFigura(int[] arrayPuntosEnX, int[] arrayPuntosEnY, String ColorFigura) {
+        Graphics ventana = getGraphics();
+
+        System.out.print(ColorFigura);
+        if (ColorFigura.equals("Azul")) {
+            ventana.setColor(Color.BLUE);
+        } else if (ColorFigura.equals("Verde")) {
+            ventana.setColor(Color.GREEN);
+        } else if (ColorFigura.equals("Cyan")) {
+            ventana.setColor(Color.CYAN);
+        } else {
+            ventana.setColor(Color.RED);
+        } 
+
+        switch (figura) {
+            case "Cuadrado":
+                // ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
+                //fillPolygon Rellena la figura y drawPolygon solo dibuja el contorno
+                ventana.fillPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
+                break;
+            case "Rectangulo":
+                // ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
+                ventana.fillPolygon(arrayPuntosEnX, arrayPuntosEnY, 4);
+                break;
+            case "Triangulo":
+                // ventana.drawPolygon(arrayPuntosEnX, arrayPuntosEnY, 3);
+                ventana.fillPolygon(arrayPuntosEnX, arrayPuntosEnY, 3);
+
                 break;
             default:
                 break;
@@ -225,6 +267,7 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taResultados = new javax.swing.JTextArea();
         btGraficar = new javax.swing.JButton();
+        btLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,7 +288,7 @@ public class Ventana extends javax.swing.JFrame {
         lbSeleccionColor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbSeleccionColor.setText("Seleccione un color ");
 
-        cbSeleccionColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo ", "Amarrillo ", "Azul ", "Verde ", " " }));
+        cbSeleccionColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo ", "Verde", "Azul ", "Cyan" }));
 
         lbCoordenadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbCoordenadas.setText("Ingrese las coordenadas");
@@ -283,7 +326,7 @@ public class Ventana extends javax.swing.JFrame {
             panelInformacionFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInformacionFigurasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -291,6 +334,13 @@ public class Ventana extends javax.swing.JFrame {
         btGraficar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btGraficarActionPerformed(evt);
+            }
+        });
+
+        btLimpiar.setText("Limpiar");
+        btLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarActionPerformed(evt);
             }
         });
 
@@ -307,9 +357,7 @@ public class Ventana extends javax.swing.JFrame {
                                 .addComponent(tituloVentana))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(panelInformacionFiguras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 253, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -323,14 +371,20 @@ public class Ventana extends javax.swing.JFrame {
                                         .addComponent(lbNumero1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(tfCoordenada1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbSeleccionFigura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lbNumero2)
                                             .addComponent(lbNumero3))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tfCoordenada3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfCoordenada2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(tfCoordenada2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(tfCoordenada3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbNumero4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -339,17 +393,13 @@ public class Ventana extends javax.swing.JFrame {
                                         .addComponent(btGraficar)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelInformacionFiguras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tituloVentana)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(lbSeleccionFigura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSeleccionFigura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,7 +407,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addComponent(lbSeleccionColor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSeleccionColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
                 .addComponent(lbCoordenadas)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -370,7 +420,8 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCoordenada3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNumero3))
+                    .addComponent(lbNumero3)
+                    .addComponent(btLimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbNumero4)
@@ -381,8 +432,6 @@ public class Ventana extends javax.swing.JFrame {
                 .addComponent(panelInformacionFiguras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        lbSeleccionFigura.getAccessibleContext().setAccessibleName("Seleccione una figura");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -457,6 +506,19 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCoordenada1ActionPerformed
 
+    private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
+        Graphics ventana=getGraphics();
+        super.paint(ventana);
+        ventana.drawLine(450, 80, 450, 500);
+        ventana.drawLine(250, 290, 650, 290);
+        for (int i = 251; i < 650; i += 10) {
+            ventana.drawLine(i, 285, i, 295);
+        }
+        for (int i = 79; i < 500; i += 10) {
+            ventana.drawLine(445, i, 455, i);
+        }
+    }//GEN-LAST:event_btLimpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -495,6 +557,7 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btGraficar;
+    private javax.swing.JButton btLimpiar;
     private javax.swing.JComboBox cbSeleccionColor;
     private javax.swing.JComboBox cbSeleccionFigura;
     private javax.swing.JScrollPane jScrollPane1;

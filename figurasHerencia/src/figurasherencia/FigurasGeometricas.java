@@ -5,7 +5,6 @@
  */
 package figurasherencia;
 
-
 /**
  *
  * @author Valentina Sarmiento
@@ -26,8 +25,6 @@ public class FigurasGeometricas {
 
     //Quitar decimales alas variables doubles
     //DecimalFormat decimales = new DecimalFormat("#.0");
-
-
     //pensar si hacer otro constructor para los lados
     public FigurasGeometricas(double coordenada1X, double coordenada1Y, double coordenada2X, double coordenada2Y, double coordenada3X, double coordenada3Y) {
         this.coordenada1X = coordenada1X;
@@ -36,24 +33,21 @@ public class FigurasGeometricas {
         this.coordenada2Y = coordenada2Y;
         this.coordenada3X = coordenada3X;
         this.coordenada3Y = coordenada3Y;
-        
+
 //        System.out.print("1/"+coordenada1X+","+coordenada1Y+"\n");
 //        System.out.print("2/"+coordenada2X+","+coordenada2Y+"\n");
 //        System.out.print("3/"+coordenada3X+","+coordenada3Y+"\n");
-        
-        
         hallarLado();
     }
 
     /*public FigurasGeometricas(int lado1) {
-        this.lado1 = lado1;
-    }*/
-
+     this.lado1 = lado1;
+     }*/
     //Recibe las coordenadas en pares , para validar si se puede hacer un triangulo en caso de que si se envia un true
-    public boolean verificarCoordenadas(){
-        boolean verificar=true;
-        
-        if(this.coordenada1X==this.coordenada2X && this.coordenada2Y == this.coordenada3Y  ){   
+    public boolean verificarCoordenadas() {
+        boolean verificar = true;
+
+        if (this.coordenada1X == this.coordenada2X && this.coordenada2Y == this.coordenada3Y) {
             verificar = false;
         }
         return verificar;
@@ -61,41 +55,46 @@ public class FigurasGeometricas {
 
     //saca la distancia de un lado 
     public void hallarLado() {
-        double raiz,raiz2;
+        double raiz, raiz2;
         double potencia1, potencia2;
 
         potencia1 = Math.pow((this.coordenada2X - this.coordenada1X), 2);
         potencia2 = Math.pow((this.coordenada2Y - this.coordenada1Y), 2);
-        raiz = Math.sqrt(potencia1+potencia2);
-        
-        this.lado1 = raiz ;
-        
+        raiz = Math.sqrt(potencia1 + potencia2);
+
+        this.lado1 = raiz;
+
         potencia1 = Math.pow((this.coordenada3X - this.coordenada2X), 2);
         potencia2 = Math.pow((this.coordenada3Y - this.coordenada2Y), 2);
-        raiz = Math.sqrt(potencia1+potencia2);
-        
-        this.lado2 = raiz ;
+        raiz = Math.sqrt(potencia1 + potencia2);
+
+        this.lado2 = raiz;
     }
 
     //Genera los arrays de puntos x y y para graficar un poligono
     public int[] arrayPuntosEnX() {
-       //int puntosEnX[] = {coordenada1X, coordenada2X, coordenada3X};
-        int puntosEnX[]= {1, 2, 3};
+        int coordenadaX1 = (int) this.coordenada1X;
+        int coordenadaX2 = (int) this.coordenada2X;
+        int coordenadaX3 = (int) this.coordenada3X;
+        coordenadaX1=450+(coordenadaX1*10);
+        coordenadaX2=450+(coordenadaX2*10);
+        coordenadaX3=450+(coordenadaX3*10);
+        int puntosEnX[] = {coordenadaX1, coordenadaX2, coordenadaX3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
         return puntosEnX;
     }
 
     public int[] arrayPuntosEnY() {
-        
+
         int coordenadaY1 = (int) this.coordenada1Y;
         int coordenadaY2 = (int) this.coordenada2Y;
         int coordenadaY3 = (int) this.coordenada3Y;
-//        int puntosEnY[] = {coordenadaY1, coordenadaY2, coordenadaY3};
-//        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
-//        return puntosEnY;
-         int puntosEnX[]= {1, 2, 3};
+        coordenadaY1=290-(coordenadaY1*10);
+        coordenadaY2=290-(coordenadaY2*10);
+        coordenadaY3=290-(coordenadaY3*10);
+        int puntosEnY[] = {coordenadaY1, coordenadaY2, coordenadaY3};
         // hacer logica segun el trinagulo , reescribir en cuadrilatero 
-        return puntosEnX;
+        return puntosEnY;
     }
 
     public void hallarArea() {
@@ -106,9 +105,9 @@ public class FigurasGeometricas {
         this.perimetro = lado1 * 4;
     }
 
-    public String resultadoOperaciones(){
-        String resultado = "El area es: " + area +"\n"+ "El perimetro es: " + perimetro;
-        
+    public String resultadoOperaciones() {
+        String resultado = "El area es: " + area + "\n" + "El perimetro es: " + perimetro;
+
         return resultado;
     }
 
@@ -130,7 +129,6 @@ public class FigurasGeometricas {
     public void setLado2(double lado2) {
         this.lado2 = lado2;
     }
-   
 
     public double getArea() {
         return area;

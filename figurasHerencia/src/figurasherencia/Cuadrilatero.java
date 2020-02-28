@@ -25,75 +25,64 @@ public class Cuadrilatero extends FigurasGeometricas {
 //        boolean verificarCoord=verificarCoordenadas();
         boolean verificar = false;
         if (tipoCuadrado.equals("Cuadrado")) {
-            if(getLado1() == getLado2()){
+            if (getLado1() == getLado2()) {
                 System.out.print("Entro al If ladoIgual \n");
                 return verificar = true;
-            }
-            else{
-               return verificar = false; 
-            }
-        } else if (tipoCuadrado.equals("Rectangulo")) {
-            if(getLado1() == getLado2()){
-                System.out.print("Entro al If ladoIgual \n");
+            } else {
                 return verificar = false;
             }
-            else{
-               return verificar = true; 
+        } else if (tipoCuadrado.equals("Rectangulo")) {
+            if (getLado1() == getLado2()) {
+                System.out.print("Entro al If ladoIgual \n");
+                return verificar = false;
+            } else {
+                return verificar = true;
             }
         } else {
             return verificar = false;
         }
-
-//        if(verificarCoord == true){
-//            //si son iguales es un Cuadrado
-//            if(getLado1() == getLado2() && tipoCuadrado.equals("Cuadrado")){
-//                System.out.print("Entro al If VCC \n");
-//                return verificar=true;
-//            }
-//            else if(getLado1() != getLado2() && tipoCuadrado.equals("Rectangulo")){
-//                System.out.print("Entro al else \n");
-//                return verificar=true;//rectangulo
-//            }
-//            else{
-//                return verificar=false;
-//            }
-//        }
-//        else{
-//            return verificar=false;
-//        }
     }
 
     //verificar coordenadas para No dibujar un ROMBO o un RomBoide
     @Override
     public boolean verificarCoordenadas() {
         boolean verificar = false;
-
-//        if(getCoordenada1Y()== getCoordenada2Y() && getCoordenada2X() == getCoordenada3X() && getCoordenada3Y() == this.coordenada4Y 
-//           && this.coordenada4X == getCoordenada1X()){   
-//            verificar = true;
-//        }
         if (getCoordenada1Y() == getCoordenada2Y() && getCoordenada2X() == getCoordenada3X() && getCoordenada3Y() == this.coordenada4Y && this.coordenada4X == getCoordenada1X()) {
             verificar = true;
-            System.out.print("Entro al If VC \n");
         }
-
         return verificar;
     }
 
-//    @Override
-//    public  double[] arrayPuntosEnX(){
-//        double puntosEnX[]={getCoordenada1X(),getCoordenada2X(),getCoordenada3X(),coordenada4X};
-//        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
-//        return puntosEnX;
-//    }
-//    
-//    
-//    @Override
-//    public  double[] arrayPuntosEnY(){
-//        double puntosEnY[]={getCoordenada1Y(),getCoordenada2Y(),getCoordenada3Y(),coordenada4X};
-//        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
-//        return puntosEnY;
-//    }
+    @Override
+    public int[] arrayPuntosEnX() {
+        int coordenadaX1 = (int) getCoordenada1X();
+        int coordenadaX2 = (int) getCoordenada2X();
+        int coordenadaX3 = (int) getCoordenada3X();
+        int coordenadaX4 = (int) this.coordenada4X;
+        coordenadaX1 = 450 + (coordenadaX1 * 10);
+        coordenadaX2 = 450 + (coordenadaX2 * 10);
+        coordenadaX3 = 450 + (coordenadaX3 * 10);
+        coordenadaX4 = 450 + (coordenadaX4 * 10);
+        int puntosEnX[] = {coordenadaX1, coordenadaX2, coordenadaX3, coordenadaX4};
+        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
+        return puntosEnX;
+    }
+
+    @Override
+    public int[] arrayPuntosEnY() {
+        int coordenadaY1 = (int) getCoordenada1Y();
+        int coordenadaY2 = (int) getCoordenada2Y();
+        int coordenadaY3 = (int) getCoordenada3Y();
+        int coordenadaY4 = (int) this.coordenada4Y;
+        coordenadaY1 = 290 - (coordenadaY1 * 10);
+        coordenadaY2 = 290 - (coordenadaY2 * 10);
+        coordenadaY3 = 290 - (coordenadaY3 * 10);
+        coordenadaY4 = 290 - (coordenadaY4 * 10);
+        int puntosEnY[] = {coordenadaY1, coordenadaY2, coordenadaY3, coordenadaY4};
+        // hacer logica segun el trinagulo , reescribir en cuadrilatero 
+        return puntosEnY;
+    }
+
     public double getCoordenada4X() {
         return coordenada4X;
     }
